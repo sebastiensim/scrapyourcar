@@ -1,19 +1,19 @@
 <?php
 	require 'class.phpmailer.php';
-	
+
 	$cfg = array();
 	$cfg['exts'] = array('jpg', 'png');
 	$cfg['mimes'] = array('image/jpeg', 'image/png');
 	$cfg['maxsize'] = 10000000;
-	$cfg['page_url'] = 'http://l1t3rally.loik.pl/scrap/';
+	$cfg['page_url'] = 'http://scrapyourcar.com.sg/';
 	$cfg['page_email'] = 'noreply@scrap.com';
 	$cfg['page_emailname'] = 'Scrap Contact Form';
-	$cfg['page_mailto'] = 'tehinfectedone@gmail.com';
+	$cfg['page_mailto'] = 'wsbastian@gmail.com';
 
 	if (isset($_POST['gs_name']) && isset($_POST['gs_icnumber']) && isset($_POST['gs_tel']) && isset($_POST['gs_email']) && isset($_POST['gs_vnumber']) && isset($_FILES['gs_photos']) && isset($_POST['gs_date'])){
 		$photos = array();
 		foreach($_FILES['gs_photos'] as $fkey => $fouter) foreach($fouter as $fnum => $f) $photos[$fnum][$fkey] = $f;
-		
+
 		//Validation
 		$msg = '';
 		if (strlen($_POST['gs_name']) < 3) $msg .= '<li>Name must be at least 3 characters long</li>';
@@ -23,7 +23,7 @@
 		if (count($photos) < 5) $msg .= '<li>You need to attach at least 5 files</li>';
 		if (strtotime($_POST['gs_date']) < strtotime(date('d-m-Y'))) $msg .= '<li>Scrap date must be today or in future</li>';
 		if ($msg != '') printError($msg);
-		
+
 		//Preparing data, uploading files
 		do{
 			$uid = dechex(time()) . dechex(rand(0,15));
@@ -31,7 +31,7 @@
 		} while (file_exists($location));
 		mkdir($location);
 		$filelocs = uploadFiles($location, $photos);
-		
+
 		$content = "Name: {$_POST['gs_name']}\n"
 					."IC Number: {$_POST['gs_icnumber']}\n"
 					."Contact Number: {$_POST['gs_tel']}\n"
@@ -39,18 +39,18 @@
 					."Vehicle Number: {$_POST['gs_vnumber']}\n"
 					."Scrap Date: {$_POST['gs_date']}\n"
 					."Unique ID: {$uid}\n";
-		
+
 		$file = fopen($location . 'data.txt' , 'w');
 		fwrite($file, $content);
 		fclose($file);
-		
+
 		$htmlcontent = str_replace("\n", "<br>", $content);
 		$altcontent = $content;
 		foreach ($filelocs as $fl){
 			$htmlcontent .= "<img src='{$cfg['page_url']}{$fl}' alt='image'/>";
 			$altcontent .= "Image Link:{$cfg['page_url']}{$fl} \n";
 		}
-		
+
 		$mail = new PHPMailer;
 		$mail->SMTPDebug = 3;
 		$mail->From = $cfg['page_email'];
@@ -69,7 +69,7 @@
 	else{
 		printError('<li>Please fill all the fields.</li>');
 	}
-	
+
 	function printError($e){
 		$ret = array();
 		$ret['state'] = 'Error';
@@ -77,12 +77,12 @@
 		echo json_encode($ret);
 		exit;
 	}
-	
+
 	function removeFolder($location){
 		array_map('unlink', glob("{$location}*.*"));
 		rmdir($location);
 	}
-	
+
 	function uploadFiles($location, $files){
 		global $cfg;
 		if(!empty($files)){
