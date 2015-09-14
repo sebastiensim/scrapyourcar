@@ -37,8 +37,7 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><i class="fa fa-sign-in"></i> Login</a></li>
-          <li><a href="#" class="btn">JOIN US</a></li>
+          <li><a href="#getstarted-popup" class="litebox-getstarted btn">JOIN US</a></li>
         </ul>
       </div>
     </div>
@@ -54,7 +53,7 @@
         <h1>Scrap Your Car</h1>
         <h2>TAGLINE FOR SERVICE</h2>
         <div class="play-btn"> <a href="https://vimeo.com/109054393" class="play litebox-hero"><img src="img/play-btn.png" alt="play"></a> </div>
-        <div class="cta-btn"> <a href="#" class="btn">GET STARTED</a>
+        <div class="cta-btn"> <a href="#getstarted-popup" class="litebox-getstarted btn">GET STARTED</a>
           <p><span class="total-number-1">0</span>K Worldwide Signups</p>
         </div>
       </div>
@@ -323,7 +322,7 @@
       <h3>*Insert Tagline Here*</h3>
     </header>
     <div class="row">
-      <div class="col-md-12"> <a href="" class="btn">GET STARTED</a>
+      <div class="col-md-12"> <a href="#getstarted-popup" class="litebox-getstarted btn">GET STARTED</a>
         <p>Have a question? Give us a call <a href="tel:+65 1234 1234"> +65 1234 1234</a>.</p>
       </div>
     </div>
@@ -504,6 +503,39 @@
   </div>
 </footer>
 <!--site-footer end-->
+
+<div id="getstarted-popup" class="mfp-hide">
+  <form action="form.php" method="POST" enctype="multipart/form-data">
+	<h2>Owner Details</h2>
+	<div class="input-group">
+		<label>Name:</label> <input type="text" name="gs_name" required>
+	</div>
+	<div class="input-group">
+		<label>IC Number:</label> <input type="text" maxlength="9" name="gs_icnumber" required>
+	</div>
+	<div class="input-group">
+		<label>Contact Number:</label> <input type="tel" pattern="[-0-9]+" name="gs_tel" required>
+	</div>
+	<div class="input-group">
+		<label>Email:</label> <input type="email" name="gs_email" required>
+	</div>
+
+	<h2>Vehicle Details</h2>
+	<div class="input-group">
+		<label>Vehicle Number:</label> <input type="text" name="gs_vnumber" required>
+	</div>
+	<div class="input-group">
+		<label>Photo:</label>
+		<div class="fileinput"><div class="fileinput_overlay">Choose files...</div><input type="file" class="inp-file" multiple="multiple" name="gs_photos[]" required></div>
+	</div>
+	<div class="input-group">
+		<label>Scrap Date:</label> <input type="date" name="gs_date" placeholder="YYYY-MM-DD" required>
+	</div>
+	<div class="input-group">
+		<button type="submit" class="btn" name="gs_send">Send</button>
+	</div>
+  </form>
+</div>
 
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

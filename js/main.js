@@ -135,7 +135,45 @@ $(function() {
         }
     });
 
-
-
-
+    /* ==========================================================================
+   Get started popup
+   ========================================================================== */
+    $('.litebox-getstarted').magnificPopup({
+        type: 'inline',
+		mainClass: 'mfp-fade',
+		removalDelay: 500,
+		focus: 'input'
+    });
+	
+	var fileslength = $('#getstarted-popup .fileinput input')[0].files.length;
+	if (fileslength > 0){
+		if (fileslength < 5) $('#getstarted-popup .fileinput_overlay').text('Minimum 5 pictures');
+		else $('#getstarted-popup .fileinput_overlay').text(fileslength + ' pictures selected');
+	}
+	
+	$('#getstarted-popup .fileinput input').change(function(){
+		if (this.files.length < 5) $(this).siblings('.fileinput_overlay').text('Minimum 5 pictures');
+		else $(this).siblings('.fileinput_overlay').text(this.files.length + ' pictures selected');
+	});
+	
+	var getstarted_processing = false;
+	$('#getstarted-popup form').submit(function(e){
+		e.preventDefault();
+		if (!getstarted_processing){
+			getstarted_processing = true;
+			$('#getstarted-popup button.btn').prop('disabled');
+			$('#getstarted-popup button.btn').html('<span class="fa fa-spinner fa-spin"></span>');
+			$.ajax({url: $(this).attr('action'), type: $(this).attr('method'), data: new FormData(this), processData: false, contentType: false, dataType: 'json'}).always(function(ret){
+				getstarted_processing = false;
+				$('#getstarted-popup .alert').remove();
+				$('#getstarted-popup button.btn').removeProp('disabled');
+				$('#getstarted-popup button.btn').text('Send');
+			}).success(function(ret){
+				if (ret.state == 'Success') $('#getstarted-popup button.btn').before('<div class="alert alert-success">Message was sent</div>');
+				else $('#getstarted-popup button.btn').before('<div class="alert alert-failure">' + ret.msg + '</div>');
+			}).fail(function(){
+				$('#getstarted-popup button.btn').before('<div class="alert alert-failure">There were an error while sending data</div>');
+			});
+		}
+	});
 });
