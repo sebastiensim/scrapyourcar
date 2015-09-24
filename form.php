@@ -5,7 +5,7 @@
 	$cfg['exts'] = array('jpg', 'png');
 	$cfg['mimes'] = array('image/jpeg', 'image/png');
 	$cfg['maxsize'] = 10000000;
-	$cfg['page_url'] = 'http://sebastiensim.github.io/scrapyourcar/';
+	$cfg['page_url'] = 'http://scrapmycar.sg/test/';
 	$cfg['page_email'] = 'noreply@scrap.com';
 	$cfg['page_emailname'] = 'Scrap Contact Form';
 	$cfg['page_mailto'] = 'wsbastian@gmail.com';
