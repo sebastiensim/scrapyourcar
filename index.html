@@ -23,7 +23,7 @@
 
   <!--navigation-->
 
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default stuck">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
@@ -45,13 +45,16 @@
   <!--navigation end-->
 
   <!--welcome message-->
-
+  <video autoplay loop muted id="bgvid">
+	<source src="http://www.w3schools.com/html/movie.mp4" type="video/mp4">
+	<source src="http://www.w3schools.com/html/movie.ogg" type="video/ogg">
+  </video>
   <section class="container text-center welcome-message">
     <div class="row">
       <div class="col-md-12">
         <h1>Car Due For Scrap or Export? Searching For A Easier Way To Scrap or Export Your Car</h1>
         <h2>Scrapmycarsg will help you get the best price for your vehicle through our network of car exporter and get back to you with a no obligation quote, all within a day!</h2>
-        <div class="play-btn"> <a href="https://vimeo.com/109054393" class="play litebox-hero"><img src="img/play-btn.png" alt="play"></a> </div>
+        <div class="play-btn" id="bgvid-playbtn"><img src="img/play-btn.png" alt="play"></div>
         <div class="cta-btn"> <a href="#getstarted-popup" class="litebox-getstarted btn">GET STARTED</a>
           <p>Your One Stop Solution To Scrap Your Vehicle</p>
         </div>
@@ -180,9 +183,9 @@
 <!--Features end-->
 
 <!--Video section-->
-
+<!--
 <section class="video-tour text-center">
-  <!--
+  
   <div class="play-btn">
     <a href="https://vimeo.com/109054393" class="play litebox-tour"><img src="img/play-btn-vs.png" alt="play"></a>
 
@@ -192,17 +195,14 @@
   </video>
     <h2>Video Preview Of Product</h2>
   </div>
--->
-  <!--HTML5 Video-->
 
   <video autoplay loop muted id="bgvid" poster="video/poster.jpg">
     <source src="video/coverVideo.mp4" type="video/mp4">
     <source src="video/vb.webm" type="video/webm">
   </video>
-  <!--HTML5 Video end-->
 
 </section>
-
+-->
 <!--Video section end-->
 
 <!--Tour-->
@@ -534,8 +534,24 @@
 		<label>Vehicle Number:</label> <input type="text" name="gs_vnumber" required>
 	</div>
 	<div class="input-group">
-		<label>Photo:</label>
-		<div class="fileinput"><div class="fileinput_overlay">Choose files...</div><input type="file" class="inp-file" multiple="multiple" name="gs_photos[]" required></div>
+		<label>Photo (front):</label>
+		<div class="fileinput"><div class="fileinput_overlay">Choose file...</div><input type="file" class="inp-file" name="gs_photos[]" required></div>
+	</div>
+	<div class="input-group">
+		<label>Photo (rear):</label>
+		<div class="fileinput"><div class="fileinput_overlay">Choose file...</div><input type="file" class="inp-file" name="gs_photos[]" required></div>
+	</div>
+	<div class="input-group">
+		<label>Photo (left):</label>
+		<div class="fileinput"><div class="fileinput_overlay">Choose file...</div><input type="file" class="inp-file" name="gs_photos[]" required></div>
+	</div>
+	<div class="input-group">
+		<label>Photo (right):</label>
+		<div class="fileinput"><div class="fileinput_overlay">Choose file...</div><input type="file" class="inp-file" name="gs_photos[]" required></div>
+	</div>
+	<div class="input-group">
+		<label>Photo (interior):</label>
+		<div class="fileinput"><div class="fileinput_overlay">Choose file...</div><input type="file" class="inp-file" name="gs_photos[]" required></div>
 	</div>
 	<div class="input-group">
 		<label>Scrap Date:</label> <input type="date" name="gs_date" placeholder="YYYY-MM-DD" required>

@@ -52,10 +52,6 @@ $(function() {
    sticky nav
    ========================================================================== */
 
-    $('.navbar-default').waypoint('sticky', {
-        offset: 30
-    });
-
     /* ==========================================================================
    litebox
    ========================================================================== */
@@ -145,15 +141,11 @@ $(function() {
 		focus: 'input'
     });
 	
-	var fileslength = $('#getstarted-popup .fileinput input')[0].files.length;
-	if (fileslength > 0){
-		if (fileslength < 5) $('#getstarted-popup .fileinput_overlay').text('Minimum 5 pictures');
-		else $('#getstarted-popup .fileinput_overlay').text(fileslength + ' pictures selected');
-	}
-	
+	$('#getstarted-popup .fileinput input').each(function(){
+		$(this).siblings('.fileinput_overlay').text($(this).val());
+	});
 	$('#getstarted-popup .fileinput input').change(function(){
-		if (this.files.length < 5) $(this).siblings('.fileinput_overlay').text('Minimum 5 pictures');
-		else $(this).siblings('.fileinput_overlay').text(this.files.length + ' pictures selected');
+		$(this).siblings('.fileinput_overlay').text($(this).val());
 	});
 	
 	var getstarted_processing = false;
@@ -174,6 +166,21 @@ $(function() {
 			}).fail(function(){
 				$('#getstarted-popup button.btn').before('<div class="alert alert-failure">There were an error while sending data</div>');
 			});
+		}
+	});
+	
+	$('#bgvid-playbtn').fadeTo('medium', 0);
+	$('#bgvid').click(function(){
+		$('#bgvid')[0].pause();
+		$('#bgvid-playbtn').fadeTo('medium', 1);
+	});
+	$('#bgvid-playbtn').click(function(){
+		if ($('#bgvid')[0].paused){
+			$('#bgvid')[0].play();
+			$('#bgvid-playbtn').fadeTo('medium', 0);
+		} else {
+			$('#bgvid')[0].pause();
+			$('#bgvid-playbtn').fadeTo('medium', 1);
 		}
 	});
 });
