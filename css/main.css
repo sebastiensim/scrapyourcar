@@ -1014,6 +1014,9 @@ blockquote::before {
 #getstarted-popup .input-group .fileinput input{opacity: 0;}
 #getstarted-popup .input-group .fileinput .fileinput_overlay{padding: 7px 0; text-align: center; position: absolute; top: 0; bottom: 0; left: 0; right: 0; display: block; background: #fff; border: 1px solid #F56363; cursor: pointer; overflow: hidden;}
 #getstarted-popup .input-group  button{display: block; width: auto; margin: auto; border: none; background: #F56363; margin-top: 10px; padding: 5px 20px;}
+#getstarted-popup .gldp-default{
+	margin: 10px 0 0 -15px;
+}
 .mfp-fade .mfp-content{position: relative; opacity: 0; top: -50px; -webkit-transition: all 0.5s ease-out; -moz-transition: all 0.5s ease-out; transition: all 0.5s ease-out;}
 .mfp-fade.mfp-ready  .mfp-content {opacity: 1; top: 0;}
 .mfp-fade.mfp-removing  .mfp-content {opacity: 0; top: 50px;}

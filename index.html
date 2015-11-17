@@ -14,6 +14,7 @@
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/magnific-popup.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
+<link href="css/glDatePicker.default.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -47,7 +48,7 @@
   <!--welcome message-->
   <video autoplay loop muted id="bgvid">
 	<source src="video/coverVideoTwo.mp4" type="video/mp4">
-	<source src="video/coverVideoTwo.oogg" type="video/ogg">
+	<source src="video/coverVideoTwo.ogg" type="video/ogg">
   </video>
   <section class="container text-center welcome-message">
     <div class="row">
@@ -488,6 +489,10 @@
 </section>
 <!--sub-form end-->
 
+<form>
+
+</form>
+
 <!--site-footer-->
 <footer class="site-footer section-spacing text-center">
   <div class="container">
@@ -500,9 +505,9 @@
         <!--social-->
 
         <ul class="social">
-          <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+          <!--<li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>-->
+          <li><a href="https://www.facebook.com/scrapmycarsg" target="_blank"><i class="fa fa-facebook"></i></a></li>
+          <!--<li><a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube-play"></i></a></li>-->
         </ul>
 
         <!--social end-->
@@ -554,8 +559,10 @@
 		<div class="fileinput"><div class="fileinput_overlay">Choose file...</div><input type="file" class="inp-file" name="gs_photos[]" required></div>
 	</div>
 	<div class="input-group">
-		<label>Scrap Date:</label> <input type="date" name="gs_date" placeholder="YYYY-MM-DD" required>
+		<label>Scrap Date:</label> <input type="text" name="gs_date" id="mydate" placeholder="YYYY-MM-DD" gldp-id="mydate" required>
 	</div>
+	<div gldp-el="mydate" style="width:400px; height:300px;">
+    </div>
 	<div class="input-group">
 		<button type="submit" class="btn" name="gs_send">Send</button>
 	</div>
@@ -565,6 +572,7 @@
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/waypoints.min.js"></script>
+<script src="js/glDatePicker.min.js"></script>
 <script src="js/jquery.animateNumber.min.js"></script>
 <script src="js/waypoints-sticky.min.js"></script>
 <script src="js/retina.min.js"></script>

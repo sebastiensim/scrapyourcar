@@ -141,6 +141,22 @@ $(function() {
 		focus: 'input'
     });
 	
+	$('input[name=gs_date]').glDatePicker({
+		showAlways: false,
+		selectableDOW: [1,2,3,4,5],
+		zIndex: 1000,
+		onClick: function(target, cell, date, data) {
+			target.val(date.getFullYear() + '-' + ('0' + date.getMonth()).slice(-2) + '-' + ('0' + date.getDate()).slice(-2));
+		},
+		onShow: function(calendar){
+			calendar.slideDown();
+			$(".mfp-wrap").animate({ scrollTop: $('#getstarted-popup').height() }, 500);
+		},
+		onHide: function(calendar){
+			calendar.slideUp();
+		}
+	});
+	
 	$('#getstarted-popup .fileinput input').each(function(){
 		$(this).siblings('.fileinput_overlay').text($(this).val());
 	});
